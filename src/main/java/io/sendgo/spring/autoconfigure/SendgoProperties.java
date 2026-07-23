@@ -18,7 +18,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "sendgo")
 public class SendgoProperties {
 
-    private String url           = "https://api.sendgo.io";
+    private String url           = "https://sendgo.io";
     private String accessKey;
     private String secretKey;
     private String kakaoSenderKey;

@@ -1,45 +1,11 @@
 {
   "properties": [
-<<<<<<< HEAD
-    {"name": "sendgo.access-key",       "type": "java.lang.String", "description": "Sendgo 액세스 키 (필수)"},
-    {"name": "sendgo.secret-key",       "type": "java.lang.String", "description": "Sendgo 시크릿 키 (필수)"},
-    {"name": "sendgo.kakao-sender-key", "type": "java.lang.String", "description": "카카오 발신프로필 키"},
-    {"name": "sendgo.sms-sender-key",   "type": "java.lang.String", "description": "SMS 발신자 키"},
-    {"name": "sendgo.api-version",      "type": "java.lang.String", "description": "API 버전 (v1 또는 v2, 기본값: v2)"},
-    {"name": "sendgo.url",              "type": "java.lang.String", "description": "API 기본 URL (기본값: https://api.sendgo.io)"}
-=======
-    {
-      "name": "sendgo.url",
-      "type": "java.lang.String",
-      "description": "Sendgo API 기본 URL",
-      "defaultValue": "https://api.sendgo.io"
-    },
-    {
-      "name": "sendgo.access-key",
-      "type": "java.lang.String",
-      "description": "Sendgo Access Key (필수)"
-    },
-    {
-      "name": "sendgo.secret-key",
-      "type": "java.lang.String",
-      "description": "Sendgo Secret Key (필수)"
-    },
-    {
-      "name": "sendgo.sms-sender-key",
-      "type": "java.lang.String",
-      "description": "SMS 발신자 키"
-    },
-    {
-      "name": "sendgo.kakao-sender-key",
-      "type": "java.lang.String",
-      "description": "카카오 발신프로필 키 (알림톡/친구톡 사용 시 필수)"
-    },
-    {
-      "name": "sendgo.api-version",
-      "type": "java.lang.String",
-      "description": "Sendgo API 버전 (v1 | v2)",
-      "defaultValue": "v1"
-    }
+    { "name": "sendgo.url",              "type": "java.lang.String", "description": "Sendgo API 기본 URL", "defaultValue": "https://sendgo.io" },
+    { "name": "sendgo.access-key",       "type": "java.lang.String", "description": "Sendgo Access Key (필수)" },
+    { "name": "sendgo.secret-key",       "type": "java.lang.String", "description": "Sendgo Secret Key (필수)" },
+    { "name": "sendgo.sms-sender-key",   "type": "java.lang.String", "description": "SMS 발신자 키" },
+    { "name": "sendgo.kakao-sender-key", "type": "java.lang.String", "description": "카카오 발신프로필 키 (알림톡/친구톡 사용 시 필수)" },
+    { "name": "sendgo.api-version",      "type": "java.lang.String", "description": "Sendgo API 버전 (v1 | v2)", "defaultValue": "v1" }
   ],
   "hints": [
     {
@@ -49,6 +15,5 @@
         { "value": "v2", "description": "API v2 (에러 코드 세분화)" }
       ]
     }
->>>>>>> origin/main
   ]
 }
