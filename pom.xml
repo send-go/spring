@@ -120,6 +120,9 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
+                        <!-- spring-boot-dependencies 는 source/javadoc 만 관리하고 gpg 는 관리하지 않으므로
+                             버전을 명시해야 합니다. (미명시 시 Maven 이 최신 릴리스를 임의로 끌어옴) -->
+                        <version>3.2.4</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
