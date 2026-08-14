@@ -13,7 +13,7 @@
 
     <groupId>io.sendgo</groupId>
     <artifactId>sendgo-spring</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <packaging>jar</packaging>
 
     <name>sendgo-spring</name>
@@ -52,7 +52,7 @@
         <dependency>
             <groupId>io.sendgo</groupId>
             <artifactId>sendgo-java</artifactId>
-            <version>1.1.0</version>
+            <version>1.2.0</version>
         </dependency>
 
         <!-- Spring Boot Auto-Configuration -->
