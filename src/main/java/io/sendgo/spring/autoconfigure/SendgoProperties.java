@@ -19,6 +19,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class SendgoProperties {
 
     private String url           = "https://sendgo.io";
+    private String agentToken;
+    public String getAgentToken() { return agentToken; }
+    public void setAgentToken(String value) { agentToken = value; }
+
     private String accessKey;
     private String secretKey;
     private String kakaoSenderKey;

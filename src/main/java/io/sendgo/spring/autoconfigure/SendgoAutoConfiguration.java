@@ -1,6 +1,7 @@
 package io.sendgo.spring.autoconfigure;
 
 import io.sendgo.SendgoClient;
+import io.sendgo.AccountClient;
 import io.sendgo.SendgoConfig;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -14,11 +15,19 @@ import org.springframework.context.annotation.Bean;
  */
 @AutoConfiguration
 @EnableConfigurationProperties(SendgoProperties.class)
-@ConditionalOnProperty(prefix = "sendgo", name = "access-key")
 public class SendgoAutoConfiguration {
+
+    /** 에이전트 토큰만으로 계정 API를 구성합니다. */
+    @Bean
+    @ConditionalOnMissingBean
+    @ConditionalOnProperty(prefix = "sendgo", name = "agent-token")
+    public AccountClient accountClient(SendgoProperties props) {
+        return new AccountClient(props.getAgentToken(), props.getUrl());
+    }
 
     @Bean
     @ConditionalOnMissingBean
+    @ConditionalOnProperty(prefix = "sendgo", name = "access-key")
     public SendgoClient sendgoClient(SendgoProperties props) {
         return new SendgoClient(SendgoConfig.builder()
                 .baseUrl(props.getUrl())

@@ -1,18 +1,55 @@
 {
   "properties": [
-    { "name": "sendgo.url",              "type": "java.lang.String", "description": "Sendgo API 기본 URL", "defaultValue": "https://sendgo.io" },
-    { "name": "sendgo.access-key",       "type": "java.lang.String", "description": "Sendgo Access Key (필수)" },
-    { "name": "sendgo.secret-key",       "type": "java.lang.String", "description": "Sendgo Secret Key (필수)" },
-    { "name": "sendgo.sms-sender-key",   "type": "java.lang.String", "description": "SMS 발신자 키" },
-    { "name": "sendgo.kakao-sender-key", "type": "java.lang.String", "description": "카카오 발신프로필 키 (알림톡/친구톡 사용 시 필수)" },
-    { "name": "sendgo.api-version",      "type": "java.lang.String", "description": "Sendgo API 버전 (v1 | v2)", "defaultValue": "v1" }
+    {
+      "name": "sendgo.url",
+      "type": "java.lang.String",
+      "description": "Sendgo API 기본 URL",
+      "defaultValue": "https://sendgo.io"
+    },
+    {
+      "name": "sendgo.agent-token",
+      "type": "java.lang.String",
+      "description": "계정 API용 에이전트 토큰 (발송용 키와 독립)"
+    },
+    {
+      "name": "sendgo.access-key",
+      "type": "java.lang.String",
+      "description": "Sendgo Access Key (필수)"
+    },
+    {
+      "name": "sendgo.secret-key",
+      "type": "java.lang.String",
+      "description": "Sendgo Secret Key (필수)"
+    },
+    {
+      "name": "sendgo.sms-sender-key",
+      "type": "java.lang.String",
+      "description": "SMS 발신자 키"
+    },
+    {
+      "name": "sendgo.kakao-sender-key",
+      "type": "java.lang.String",
+      "description": "카카오 발신프로필 키 (알림톡/친구톡 사용 시 필수)"
+    },
+    {
+      "name": "sendgo.api-version",
+      "type": "java.lang.String",
+      "description": "Sendgo API 버전 (v1 | v2)",
+      "defaultValue": "v2"
+    }
   ],
   "hints": [
     {
       "name": "sendgo.api-version",
       "values": [
-        { "value": "v1", "description": "API v1 (기본값)" },
-        { "value": "v2", "description": "API v2 (에러 코드 세분화)" }
+        {
+          "value": "v1",
+          "description": "API v1"
+        },
+        {
+          "value": "v2",
+          "description": "API v2 (에러 코드 세분화) (기본값)"
+        }
       ]
     }
   ]
