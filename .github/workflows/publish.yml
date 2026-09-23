@@ -24,8 +24,32 @@ jobs:
           server-password: MAVEN_CENTRAL_PASSWORD
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
+      # Central 공개 동기화가 지연되어도 동일 릴리스 태그의 코어로 빌드합니다.
+      # 게시되는 POM의 코어 의존성 버전은 변경하지 않습니다.
+      - name: 코어 의존성 버전 확인
+        id: core
+        run: |
+          python3 - <<'PY'
+          import os, re, xml.etree.ElementTree as ET
+          ns = {'m': 'http://maven.apache.org/POM/4.0.0'}
+          dependencies = ET.parse('pom.xml').findall('./m:dependencies/m:dependency', ns)
+          core = next(d for d in dependencies if d.findtext('m:groupId', namespaces=ns) == 'io.sendgo' and d.findtext('m:artifactId', namespaces=ns) == 'sendgo-java')
+          version = core.findtext('m:version', namespaces=ns)
+          assert re.fullmatch(r'\d+\.\d+\.\d+', version), '코어 릴리스 버전이 필요합니다'
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'ref=v{version}\n')
+          PY
+      - name: 릴리스된 코어 소스 가져오기
+        uses: actions/checkout@v4
+        with:
+          repository: send-go/java
+          ref: ${{ steps.core.outputs.ref }}
+          path: .sendgo-core
+          persist-credentials: false
+      - name: 코어 테스트 및 로컬 설치
+        run: mvn -B -f .sendgo-core/pom.xml install
       - name: Central 배포
-        run: mvn -B -P release deploy -DskipTests
+        run: mvn -B -P release deploy
         env:
           MAVEN_CENTRAL_USERNAME: ${{ secrets.CENTRAL_TOKEN_USERNAME }}
           MAVEN_CENTRAL_PASSWORD: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
